@@ -10,7 +10,7 @@ from matplotlib import pyplot
 from tabulate import tabulate
 
 
-data = pd.read_csv("C:\\Users\\PAVAN\\Data_Science\\Project\\Emission.csv")
+data = pd.read_csv("Emission.csv")
 
 final_arima = ARIMA(data['CO2'],order = (3,1,4))
 final_arima = final_arima.fit()
@@ -86,8 +86,4 @@ if nav == "Forecast":
        fig1= plt.figure(figsize=(10,4))
        plt.hist(pred)
        st.pyplot(fig1)
-
-
-data = pd.read_csv("CO2 dataset.csv")
-data2 = pd.read_csv("CO2 dataset.csv",header=0, index_col=0,parse_dates=True )
      
