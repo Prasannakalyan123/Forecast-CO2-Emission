@@ -7,7 +7,7 @@ import warnings
 warnings.filterwarnings("ignore")
 import matplotlib.pyplot as plt
 from matplotlib import pyplot
-from tabulate import tabulate
+
 
 
 data = pd.read_csv("Emission.csv")
