@@ -3,9 +3,11 @@ import pandas as pd
 from statsmodels.tsa.arima.model import ARIMA
 import numpy as np 
 from matplotlib import pyplot as plt
+import warnings
+warnings.filterwarnings("ignore")
 import matplotlib.pyplot as plt
 from matplotlib import pyplot
-
+from tabulate import tabulate
 
 
 data = pd.read_csv("Emission.csv")
@@ -84,4 +86,3 @@ if nav == "Forecast":
        fig1= plt.figure(figsize=(10,4))
        plt.hist(pred)
        st.pyplot(fig1)
-     
