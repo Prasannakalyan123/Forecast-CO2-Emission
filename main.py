@@ -9,7 +9,6 @@ import matplotlib.pyplot as plt
 from matplotlib import pyplot
 
 
-
 data = pd.read_csv("Emission.csv")
 
 final_arima = ARIMA(data['CO2'],order = (3,1,4))
