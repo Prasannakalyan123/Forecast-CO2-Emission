@@ -9,12 +9,16 @@ import matplotlib.pyplot as plt
 from matplotlib import pyplot
 
 
-data = pd.read_csv("Emission.csv")
 
-final_arima = ARIMA(data['CO2'],order = (3,1,4))
+
+data = pd.read_csv("Emission.csv")
+data2 = pd.read_csv("Emission.csv",header=0, index_col=0,parse_dates=True )
+
+
+final_arima = ARIMA(data2['CO2'],order = (3,1,4))
 final_arima = final_arima.fit()
 
-data2 = data.copy()
+
 
 st.title("Forecasting CO2 Emission")
 nav = st.sidebar.radio("Navigation",["About data","Prediction","Forecast"])
@@ -47,16 +51,18 @@ if nav == "About data":
  
 
   
+  
 if nav == "Prediction":
    predict = final_arima.fittedvalues
-   data["Predicted_CO2"] = predict
-   data
-   plt.plot(data.CO2, label='original')
-   plt.plot(predict, label='forecast')
-   plt.title('Forecast')
+   data2["Predicted_CO2"] = predict
+   data2
+   plt.plot(data2.CO2, label='original')
+   plt.plot(predict, label='Predicted')
+   plt.title('Prediction')
    plt.legend(loc='upper left', fontsize=8)
    st.pyplot()
   
+
 
 if nav == "Forecast":
     
@@ -74,7 +80,7 @@ if nav == "Forecast":
 
        st.subheader("Line plot of the Forecasted data")
        st.line_chart(pred)
-  
+
        st.subheader("Area plot of the Forecasted data") 
        st.area_chart(data=pred, width=150, height=300, use_container_width=True)
 
